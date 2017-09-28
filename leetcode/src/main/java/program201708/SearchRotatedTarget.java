@@ -20,31 +20,49 @@ public class SearchRotatedTarget {
 
 
     public static void main(String[] args) {
-        int[] arrs = new int[]{3, 5, 6, 1, 2};
-        System.out.println(searchFromRotatedArray(arrs, 3));
+        int[] arrs = new int[]{5,1,3};
+
+        System.out.println(searchFromRotatedArray(arrs, 5));
         //left < right     left > right
     }
 
     public static int searchFromRotatedArray(int[] nums, int target) {
-        int start = 0;
-        int end = nums.length - 1;
-        while (start <= end) {
-            int mid = (start + end) / 2;
+        int left = 0;
+        int right = nums.length - 1;
+        while (left <= right) {
+            int mid = (left + right) / 2;
             if (nums[mid] == target)
                 return mid;
 
-            if (nums[start] <= nums[mid]) {
-                if (target < nums[mid] && target >= nums[start])
-                    end = mid - 1;
-                else
-                    start = mid + 1;
+            /**
+             *     left  mid right
+             *  4,   5,  6,   1,   2,   3
+             *
+             * 收获：遇到问题关键是分析问题、列出各种可能情况从而进行分类处理，
+             * 几种情况
+             * 1、left mid right都在左边增长子序列             nums[left] < nums[mid] < nums[right]
+             * 2、left mid right都在右边增长子序列             nums[left] < nums[mid] < nums[right]
+             * 3、left mid在左边增长子序列，right在右边增长子序列 nums[left] < nums[mid] > nums[right]
+             * 4、left在左边增长子序列，mid和right在右边增长子序列 nums[mid] < nums[right] < nums[left]
+             */
+
+            //递增子序列   1,3  2
+
+            if (nums[left] <= nums[mid]) {
+                if (target >= nums[left] && target < nums[mid]) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+
+                }
             }
 
-            if (nums[mid] <= nums[end]) {
-                if (target > nums[mid] && target <= nums[end])
-                    start = mid + 1;
-                else
-                    end = mid - 1;
+            if (nums[right] >= nums[mid]) {
+                if (target > nums[mid] && target <= nums[right]) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
             }
         }
         return -1;

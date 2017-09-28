@@ -12,6 +12,7 @@
     <modules>
         <module>leetcode</module>
         <module>ArtOfProgram</module>
+        <module>java8</module>
     </modules>
 
 
