@@ -1,3 +1,7 @@
+package lambda;
+
+import my.Dish;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;

@@ -1,3 +1,5 @@
+package lambda;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -104,9 +106,8 @@ public class Traders {
 
         //由文件生成流
 
-
-
-
+        Map<Integer, List<Transaction>> collect = transactions.stream().collect(Collectors.groupingBy(Transaction::getValue));
+        System.out.println(collect);
 
 
     }

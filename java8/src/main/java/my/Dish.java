@@ -1,3 +1,4 @@
+package my;
 
 public class Dish {
     private final String name;
@@ -34,4 +35,17 @@ public class Dish {
     }
 
     public enum Type {MEAT, FISH, OTHER}
+
+    public CaloricLevel getDishCaloricLevelFunction() {
+        if (getCalories() <= 400) {
+            return CaloricLevel.DIET;
+        } else if (getCalories() <= 700) {
+            return CaloricLevel.NORMAL;
+        } else {
+            return CaloricLevel.FAT;
+        }
+
+    }
+
 }
+

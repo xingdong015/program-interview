@@ -1,3 +1,5 @@
+package lambda;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.FileSystem;
@@ -28,7 +30,7 @@ public class FileStream {
          * Stream<Stream<String>> streamStream = lines.map(line -> Arrays.stream(line.split(" ")));
          Stream<String> stringStream = lines.flatMap(line -> Arrays.stream(line.split(" ")));
          */
-        try (Stream<String> lines = Files.lines(Paths.get("data.txt"), Charset.defaultCharset())) {
+        try (Stream<String> lines = Files.lines(Paths.get("lambda/data.txt"), Charset.defaultCharset())) {
             uniqueWords = lines.flatMap(line -> Arrays.stream(line.split(" "))).
                     distinct().
                     count();

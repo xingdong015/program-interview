@@ -1,3 +1,5 @@
+package lambda;
+
 public class Transaction {
     private final Trader trader;
     private final int year;

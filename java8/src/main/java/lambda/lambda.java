@@ -1,3 +1,5 @@
+package lambda;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,7 +20,7 @@ public class lambda {
     }
 
     public static String processFile() throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("lambda/data.txt"))) {
             return br.readLine();
         }
     }
@@ -30,7 +32,7 @@ public class lambda {
     }
 
     public static String processFile(BufferedReaderProcessor processor) throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader("data.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("lambda/data.txt"))) {
             return processor.process(br);
         }
     }

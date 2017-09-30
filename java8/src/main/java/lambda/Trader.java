@@ -1,3 +1,5 @@
+package lambda;
+
 public class Trader {
     private final String name;
     private final String city;
